@@ -20,8 +20,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go-dao"
-	"go-dao/mock"
+	"github.com/hunyxv/go-dao"
+	"github.com/hunyxv/go-dao/mock"
 )
 
 // HandlerTestSuite test suite for the Manager struct.

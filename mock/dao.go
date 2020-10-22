@@ -1,7 +1,7 @@
 package mock
 
 import (
-	"go-dao"
+	"github.com/hunyxv/go-dao"
 )
 
 const (

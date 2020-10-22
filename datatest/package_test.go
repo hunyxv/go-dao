@@ -13,8 +13,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 
-	"go-dao"
-	"go-dao/mock"
+	"github.com/hunyxv/go-dao"
+	"github.com/hunyxv/go-dao/mock"
 )
 
 var db *sql.DB
