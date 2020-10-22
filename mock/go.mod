@@ -1,4 +1,4 @@
-module mock
+module github.com/hunyxv/go-dao/mock
 
 go 1.15
 
