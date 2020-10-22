@@ -1,7 +1,7 @@
 package mock
 
 import (
-	"github.com/steenzout/go-dao"
+	"go-dao"
 )
 
 // Factory struct to create mock implementations of data access objects.

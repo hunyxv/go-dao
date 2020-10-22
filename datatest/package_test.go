@@ -7,13 +7,14 @@ import (
 	"testing"
 
 	// load PostgreSQL driver
-	_ "github.com/lib/pq"
+	// _ "github.com/lib/pq"
+	_ "github.com/go-sql-driver/mysql"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/steenzout/go-dao"
-	"github.com/steenzout/go-dao/mock"
+	"go-dao"
+	"go-dao/mock"
 )
 
 var db *sql.DB
@@ -21,16 +22,17 @@ var db *sql.DB
 func init() {
 	var err error
 
-	host := "127.0.0.1"
-	database := "travis_ci_test"
-	port := 5432
-	user := "postgres"
+	host := "hongning"
+	database := "test"
+	port := 3306
+	user := "test"
+	passwd := "123456"
 
 	dbinfo := fmt.Sprintf(
-		"user=%s host=%s port=%d dbname=%s sslmode=disable",
-		user, host, port, database)
+		"%s:%s@tcp(%s:%d)/%s?charset=utf8",
+		user, passwd, host, port, database)
 
-	db, err = sql.Open("postgres", dbinfo)
+	db, err = sql.Open("mysql", dbinfo)
 	if err != nil {
 		log.Fatal(err)
 	}
