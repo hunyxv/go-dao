@@ -13,14 +13,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-package dao_test
+package testdata
 
 import (
-	"github.com/stretchr/testify/suite"
+	"github.com/hunyxv/go-dao/mock"
 )
 
-// DAOTestSuite test suite for the DataAccessObject interface and
-// BaseDataAccessObject struct.
-type DAOTestSuite struct {
-	suite.Suite
+// ManagerSuite test suite for the Manager struct.
+type ManagerTestSuite struct {
+	DatabaseTestSuite
+}
+
+func (s *ManagerTestSuite) Test() {
+	ctx, err := s.manager.StartTransaction()
+	assertNoError(s.T(), err)
+	if s.NotNil(ctx) {
+		defer s.manager.EndTransaction(ctx)
+
+		dao, err := s.manager.CreateDAO(ctx, mock.DAOMock)
+		assertNoError(s.T(), err)
+
+		if s.NotNil(dao) {
+			mockDAO := dao.(mock.MockDAO)
+			mockDAO.MockSomething()
+
+			err = s.manager.CommitTransaction(ctx)
+			assertNoError(s.T(), err)
+		}
+	}
 }
